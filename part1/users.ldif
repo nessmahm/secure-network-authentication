@@ -1,0 +1,66 @@
+# Group Entry for "teachers"
+dn: cn=teachers,ou=groups,dc=insat,dc=uc,dc=tn
+objectClass: posixGroup
+objectClass: top
+gidNumber: 6001
+cn: teachers
+modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
+
+# Group Entry for "students"
+dn: cn=students,ou=groups,dc=insat,dc=uc,dc=tn
+objectClass: posixGroup
+objectClass: top
+gidNumber: 6002
+cn: students
+modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
+
+# User Entry for "souhaieb.youssfi"
+dn: uid=souhaieb.youssfi,ou=users,dc=insat,dc=uc,dc=tn
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 6001
+gidNumber: 6001
+homeDirectory: /home/souhaieb
+loginShell: /bin/bash
+uid: souhaieb.youssfi
+sn: Youssfi
+cn: Souhaieb Youssfi
+userPassword: souheib
+modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
+
+# User Entry for "mohamed.dhouib"
+dn: uid=mohamed.dhouib,ou=users,dc=insat,dc=uc,dc=tn
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 6002
+gidNumber: 6002
+homeDirectory: /home/dhouib
+loginShell: /bin/bash
+uid: mohamed.dhouib
+sn: Dhouib
+cn: Mohamed Dhouib
+userPassword: dhouib
+modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
+
+# User Entry for "nada.mankai"
+dn: uid=nada.mankai,ou=users,dc=insat,dc=uc,dc=tn
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 6003
+gidNumber: 6002
+homeDirectory: /home/mankai
+loginShell: /bin/bash
+uid: nada.mankai
+sn: Mankai
+cn: Nada Mankai
+userPassword: mankai
+modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
