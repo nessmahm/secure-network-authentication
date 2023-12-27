@@ -1,0 +1,17 @@
+# Organization
+dn: dc=ldap,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Example Organization
+dc: ldap
+
+# Organizational Unit for users
+dn: ou=users,dc=ldap,dc=com
+objectClass: organizationalUnit
+ou: users
+
+# Organizational Unit for groups
+dn: ou=groups,dc=ldap,dc=com
+objectClass: organizationalUnit
+ou: groups

@@ -1,49 +1,76 @@
 #!/bin/bash
 
-# Section 1: Configuration of OpenLDAP
-
+# Function to install OpenLDAP and LDAP utilities
 installOpenLDAP() {
     sudo apt-get update
     sudo apt-get install -y slapd ldap-utils
-
 }
+
+# Function to reconfigure OpenLDAP
 reconfigureOpenLDAP() {
     sudo dpkg-reconfigure slapd
     sudo systemctl start slapd
-
 }
 
-configureOpenLDAP() {
-    # You will be prompted to set a password for the admin user during installation
-    # Provide a password and remember it for later use
+# Function to add Organizational Units to OpenLDAP
+addOpenLDAPOrganizationalUnits() {
+    sudo ldapadd -x -D "cn=admin,dc=ldap,dc=com" -W -f organization.ldif
+}
 
-    # 1.1 Configure OpenLDAP with at least two users and two groups
+# Function to add users to OpenLDAP
+addOpenLDAPUsers() {
     sudo ldapadd -x -D "cn=admin,dc=ldap,dc=com" -W -f users.ldif
-
-    # Create a file add_users.ldif with the user entries (as mentioned in the previous response)
 }
 
+# Function to delete OpenLDAP users configuration
+deleteOpenLDAPUsers() {
+    ldapdelete -x -D "cn=admin,dc=ldap,dc=com" -W "dc=ldap,dc=com"
+}
+
+# Function to test user authentication in OpenLDAP
 testAuthentication() {
-    # 1.3 Ensure users can authenticate successfully
-    # Test authentication using ldapwhoami
-    ldapwhoami -x -D "uid=user1,ou=people,dc=example,dc=com" -W
+    ldapsearch -x -D "uid=$1,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
 }
 
+# Function to test secure LDAP with LDAPS
 testLDAPS() {
-    # 1.4 Test secure LDAP with LDAPS
-    # Enable LDAPS in slapd.conf or use a separate LDAPS configuration file
-    # For testing, you can use self-signed certificates or obtain valid certificates
-    # and update the paths in the LDAPS configuration
-
     # Install necessary packages for LDAPS
-    sudo apt-get install -y gnutls-bin
+    sudo apt install gnutls-bin ssl-cert
+
+    # Generate self-signed certificate
+    sudo certtool --generate-privkey --bits 4096 --outfile /etc/ssl/private/mycakey.pem
+    sudo certtool --generate-self-signed \
+        --load-privkey /etc/ssl/private/mycakey.pem \
+        --outfile /usr/local/share/ca-certificates/mycacert.crt
+
+    sudo update-ca-certificates
+    sudo certtool --generate-privkey \
+        --bits 2048 \
+        --outfile /etc/ldap/ldap01_slapd_key.pem
+
+    sudo certtool --generate-certificate \
+        --load-privkey /etc/ldap/ldap01_slapd_key.pem \
+        --load-ca-certificate /etc/ssl/certs/mycacert.pem \
+        --load-ca-privkey /etc/ssl/private/mycakey.pem \
+        --outfile /etc/ldap/ldap01_slapd_cert.pem
+
+    sudo chgrp openldap /etc/ldap/ldap01_slapd_key.pem
+    sudo chmod 0640 /etc/ldap/ldap01_slapd_key.pem
+    sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f certinfo.ldif
+
+    # Update SLAPD_SERVICES in slapd configuration
+
+    sudo systemctl restart slapd
 
     # Test LDAPS
-    ldapsearch -H ldaps://localhost -D "uid=user1,ou=people,dc=example,dc=com" -W
+    ldapsearch -H ldaps://localhost  -D "uid=$1,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
 }
 
-# Execute the functions
-#installOpenLDAP
-configureOpenLDAP
-#testAuthentication
-#testLDAPS
+# Uncomment and execute the functions as needed
+# installOpenLDAP
+# reconfigureOpenLDAP
+# addOpenLDAPOrganizationalUnits
+# addOpenLDAPUsers
+# deleteOpenLDAPUsers
+# testAuthentication <username>
+testLDAPS mohamed.dhouib
