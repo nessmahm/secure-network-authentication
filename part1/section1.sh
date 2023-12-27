@@ -2,28 +2,34 @@
 
 # Section 1: Configuration of OpenLDAP
 
-function installOpenLDAP {
+installOpenLDAP() {
     sudo apt-get update
     sudo apt-get install -y slapd ldap-utils
+
+}
+reconfigureOpenLDAP() {
+    sudo dpkg-reconfigure slapd
+    sudo systemctl start slapd
+
 }
 
-function configureOpenLDAP {
+configureOpenLDAP() {
     # You will be prompted to set a password for the admin user during installation
     # Provide a password and remember it for later use
 
     # 1.1 Configure OpenLDAP with at least two users and two groups
-    sudo ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f users.ldif
+    sudo ldapadd -x -D "cn=admin,dc=ldap,dc=com" -W -f users.ldif
 
     # Create a file add_users.ldif with the user entries (as mentioned in the previous response)
 }
 
-function testAuthentication {
+testAuthentication() {
     # 1.3 Ensure users can authenticate successfully
     # Test authentication using ldapwhoami
     ldapwhoami -x -D "uid=user1,ou=people,dc=example,dc=com" -W
 }
 
-function testLDAPS {
+testLDAPS() {
     # 1.4 Test secure LDAP with LDAPS
     # Enable LDAPS in slapd.conf or use a separate LDAPS configuration file
     # For testing, you can use self-signed certificates or obtain valid certificates
@@ -37,7 +43,7 @@ function testLDAPS {
 }
 
 # Execute the functions
-installOpenLDAP
+#installOpenLDAP
 configureOpenLDAP
-testAuthentication
-testLDAPS
+#testAuthentication
+#testLDAPS

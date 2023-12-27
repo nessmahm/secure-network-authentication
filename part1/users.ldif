@@ -1,21 +1,38 @@
+# Organization
+dn: dc=ldap,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Example Organization
+dc: ldap
+
+# Organizational Unit for users
+dn: ou=users,dc=ldap,dc=com
+objectClass: organizationalUnit
+ou: users
+
+# Organizational Unit for groups
+dn: ou=groups,dc=ldap,dc=com
+objectClass: organizationalUnit
+ou: groups
+
+
 # Group Entry for "teachers"
-dn: cn=teachers,ou=groups,dc=insat,dc=uc,dc=tn
+dn: cn=teachers,ou=groups,dc=ldap,dc=com
 objectClass: posixGroup
 objectClass: top
 gidNumber: 6001
 cn: teachers
-modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
 
 # Group Entry for "students"
-dn: cn=students,ou=groups,dc=insat,dc=uc,dc=tn
+dn: cn=students,ou=groups,dc=ldap,dc=com
 objectClass: posixGroup
 objectClass: top
 gidNumber: 6002
 cn: students
-modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
 
 # User Entry for "souhaieb.youssfi"
-dn: uid=souhaieb.youssfi,ou=users,dc=insat,dc=uc,dc=tn
+dn: uid=souhaieb.youssfi,ou=users,dc=ldap,dc=com
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -29,10 +46,9 @@ uid: souhaieb.youssfi
 sn: Youssfi
 cn: Souhaieb Youssfi
 userPassword: souheib
-modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
 
 # User Entry for "mohamed.dhouib"
-dn: uid=mohamed.dhouib,ou=users,dc=insat,dc=uc,dc=tn
+dn: uid=mohamed.dhouib,ou=users,dc=ldap,dc=com
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -46,10 +62,9 @@ uid: mohamed.dhouib
 sn: Dhouib
 cn: Mohamed Dhouib
 userPassword: dhouib
-modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
 
 # User Entry for "nada.mankai"
-dn: uid=nada.mankai,ou=users,dc=insat,dc=uc,dc=tn
+dn: uid=nada.mankai,ou=users,dc=ldap,dc=com
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -63,4 +78,3 @@ uid: nada.mankai
 sn: Mankai
 cn: Nada Mankai
 userPassword: mankai
-modifiersName: cn=admin,dc=myguest,dc=virtualbox,dc=org
