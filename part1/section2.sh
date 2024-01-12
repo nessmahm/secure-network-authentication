@@ -26,11 +26,11 @@ restrictSSHAccess() {
 # Function to test SSH access for an authorized and unauthorized user
 testSSHAccess() {
     # Test SSH access for a user
-    ssh $1@localhost
+    ssh "$1"@localhost
 
 }
 
 # Uncomment and execute the functions as needed
 # enableSSHAuthWithOpenLDAP
 # restrictSSHAccess
- testSSHAccess souhaieb.youssfi
+# testSSHAccess souhaieb.youssfi

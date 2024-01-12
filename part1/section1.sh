@@ -73,4 +73,4 @@ testLDAPS() {
 # addOpenLDAPUsers
 # deleteOpenLDAPUsers
 # testAuthentication <username>
-testLDAPS mohamed.dhouib
+# testLDAPS mohamed.dhouib
