@@ -6,17 +6,21 @@
 installApache() {
     sudo apt-get update
     sudo apt-get install -y apache2
+    sudo a2enmod authnz_ldap
+    sudo systemctl restart apache2
+
 }
 
 # Function to configure Apache for OpenLDAP authentication
 configureApacheOpenLDAP() {
     # Enable LDAP authentication module
-    sudo a2enmod authnz_ldap
+    echo "Please Enter LDAP Password :"
 
+    read -s LDAP_PASSWORD
     # Configure Apache to use OpenLDAP for authentication
     # Update the LDAP server and group information
     sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null <<EOF
-    <VirtualHost *:80>
+    <VirtualHost *:443>
         DocumentRoot /var/www/html
         <Directory /var/www/html>
             AuthType Basic
@@ -24,7 +28,7 @@ configureApacheOpenLDAP() {
             AuthBasicProvider ldap
             AuthLDAPURL "ldap://localhost/dc=ldap,dc=com?uid"
             AuthLDAPBindDN "cn=admin,dc=ldap,dc=com"
-            AuthLDAPBindPassword "ldap50810555"
+            AuthLDAPBindPassword $LDAP_PASSWORD
             Require ldap-group cn=teachers,ou=groups,dc=ldap,dc=com
         </Directory>
     </VirtualHost>
