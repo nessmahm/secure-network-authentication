@@ -4,6 +4,7 @@
 
 # Function to enable SSH authentication via OpenLDAP
 enableSSHAuthWithOpenLDAP() {
+    sudo apt-get purge openssh-server
     # Ensure OpenLDAP and SSH are installed
     sudo apt-get install -y openssh-server libpam-ldapd nscd
 
