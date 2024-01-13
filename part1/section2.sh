@@ -4,6 +4,7 @@
 
 # Function to enable SSH authentication via OpenLDAP
 enableSSHAuthWithOpenLDAP() {
+    sudo apt-get purge openssh-server
     # Ensure OpenLDAP and SSH are installed
     sudo apt-get install -y openssh-server libpam-ldapd nscd
 
@@ -26,11 +27,11 @@ restrictSSHAccess() {
 # Function to test SSH access for an authorized and unauthorized user
 testSSHAccess() {
     # Test SSH access for a user
-    ssh $1@localhost
+    ssh "$1"@localhost
 
 }
 
 # Uncomment and execute the functions as needed
 # enableSSHAuthWithOpenLDAP
 # restrictSSHAccess
- testSSHAccess souhaieb.youssfi
+# testSSHAccess souhaieb.youssfi
