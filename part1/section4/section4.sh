@@ -10,19 +10,14 @@ installOpenVpn() {
 
 # Function to configure OpenVPN server
 configureOpenVpn() {
-  sudo openssl dhparam -out /etc/openvpn/dh2048.pem 2048
-    # Edit OpenVPN server configuration file
-    sudo cp openvpn-server.conf /etc/openvpn/server.conf
+    sudo openssl dhparam -out /etc/openvpn/dh2048.pem 2048
 
+    sudo cp openvpn-server.conf /etc/openvpn/server.conf
     sudo cp openvpn-client.conf /etc/openvpn/client.conf
 
-    # Create LDAP configuration directory
     sudo mkdir -p /etc/openvpn/auth
-
-    # Copy LDAP configuration file
     sudo cp ldap.conf /etc/openvpn/auth/ldap.conf
 
-    # Restart OpenVPN service
     sudo service openvpn restart
 }
 
