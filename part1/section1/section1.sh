@@ -63,7 +63,8 @@ deleteOpenLDAPGroups() {
 
 # Function to test user authentication in OpenLDAP
 testAuthentication() {
-    ldapsearch -x -D "uid=$1,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
+    read -p "Enter LDAP username: " ldapUsername
+    ldapsearch -x -D "uid=$ldapUsername,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
 }
 
 configureLDAPS() {
@@ -90,5 +91,10 @@ configureLDAPS() {
 
 # Function to test secure LDAP with LDAPS
 testLDAPS() {
-    ldapsearch -x -H ldaps://localhost:636 -D "uid=$1,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
+    if [ -z "$1" ]; then
+            read -p "Enter LDAP Username: " ldapUsername
+        else
+            ldapUsername="$1"
+    fi
+    ldapsearch -x -H ldaps://localhost:636 -D "uid=$ldapUsername,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
 }

@@ -32,7 +32,11 @@ configureOpenVpn() {
 # Function to test VPN connection with OpenLDAP credentials
 testVpnClient() {
     # Prompt the user for LDAP credentials
-    read -p "Enter LDAP username: " ldapUsername
+    if [ -z "$1" ]; then
+                read -p "Enter LDAP Username: " ldapUsername
+            else
+                ldapUsername="$1"
+    fi
     read -s -p "Enter LDAP password: " ldapPassword
     echo  # Move to the next line after password input
 
