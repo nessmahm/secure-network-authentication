@@ -1,0 +1,19 @@
+
+; Forward Zone file for gl4.tn
+$TTL 14400
+@      86400    IN      SOA     ns1.gl4.tn. webmaster.gl4.tn. (
+                3013040200      ; serial, todays date+todays
+                86400           ; refresh, seconds
+                7200            ; retry, seconds
+                3600000         ; expire, seconds
+                86400           ; minimum, seconds
+      )
+ns1             IN A 192.168.56.101
+ns2             IN A 192.168.56.101
+gl4.tn.   86400  IN        NS      ns1.gl4.tn.
+gl4.tn.   86400  IN        NS      ns2.gl4.tn.
+gl4.tn.          IN        A       192.168.56.99
+apache           IN        A       127.0.0.1
+ldap             IN        A       127.0.0.1
+openvpn          IN        A       127.0.0.1
+www              IN        CNAME   gl4.tn.
