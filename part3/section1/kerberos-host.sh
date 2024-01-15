@@ -11,8 +11,8 @@ installKerberos(){
   sudo apt-get update
   sudo apt install krb5-kdc krb5-admin-server krb5-config
   #Nous avons choisi comme un nom de domaine : company.tn
-}
-verifyConfig() {
+
+  #Verify the configuration
   cat /etc/krb5.conf
 }
 
@@ -107,7 +107,6 @@ sendFile(){
 
 #configureHostname
 #installKerberos
-#verifyConfig
 #createPasswordForKerberosDB
 #connectKerberos
 #configureKerberos
