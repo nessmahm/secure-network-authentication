@@ -1,0 +1,22 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "example.net" IN {
+        type master;
+        file "/etc/bind/example.net.zone";
+};
+
+zone "gl4.tn" IN {
+	type master;
+	file "/etc/bind/gl4.tn.zone";
+};
+
+zone "99.56.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.99.56.168.192";
+};
