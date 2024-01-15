@@ -45,3 +45,35 @@ uid: nada.mankai
 sn: Mankai
 cn: Nada Mankai
 userPassword: mankai
+
+# User Entry for "maissene.zairi"
+dn: uid=maissene.zairi,ou=users,dc=ldap,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 6004
+gidNumber: 6002
+homeDirectory: /home/maissene
+loginShell: /bin/bash
+uid: maissene.zairi
+sn: Zairi
+cn: Maissene Zairi
+userPassword: zairi
+
+# User Entry for "nessma.hamidou"
+dn: uid=nessma.hamidou,ou=users,dc=ldap,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 6005
+gidNumber: 6002
+homeDirectory: /home/hamidou
+loginShell: /bin/bash
+uid: nessma.hamidou
+sn: Hamidou
+cn: Nessma Hamidou
+userPassword: hamidou
