@@ -36,11 +36,3 @@ restartBind9() {
 testDNS() {
   dig gl4.tn
 }
-installBind9
-createZoneFile
-createReverseZoneFile
-updateMainConfigFile
-checkConfigFiles
-verifyZoneFile
-restartBind9
-testDNS

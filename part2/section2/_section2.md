@@ -8,12 +8,12 @@ Test DNS resolution for the configured services:
     dig openvpn.gl4.tn
 
 ### Example: ldap auth
-
-    ldapsearch -x -H ldap://ldap.gl4.tn -b "dc=gl4,dc=tn" -D "cn=admin,dc=gl4,dc=tn" -W
-
+~~~sh
+    source ./section2.sh && ldapDNS
+~~~
 ### Example: apache auth
-
-    curl -u user1:password1 http://apache.gl4.tn
-
+~~~sh
+    source ./section2.sh && apacheDNS
+~~~~
 
 ### Example: openvpn auth
