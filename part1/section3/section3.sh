@@ -21,5 +21,11 @@ configureApacheOpenLDAP() {
 
 # Function to test web access for an authorized and unauthorized user
 testWebAccess() {
-    curl -u $1:$2 http://localhost
+      if [ -z "$1" ]; then
+              read -p "Enter LDAP Username: " ldapUsername
+          else
+              ldapUsername="$1"
+      fi
+      read -s -p "Enter LDAP password: " ldapPassword
+      curl -u "$ldapUsername":"$ldapPassword" http://localhost
 }

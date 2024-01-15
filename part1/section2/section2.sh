@@ -26,7 +26,11 @@ restrictSSHAccess() {
 
 # Function to test SSH access for an authorized and unauthorized user
 testSSHAccess() {
-    # Test SSH access for a user
-    ssh $1@localhost
+    if [ -z "$1" ]; then
+            read -p "Enter LDAP Username: " ldapUsername
+        else
+            ldapUsername="$1"
+    fi    # Test SSH access for a user
+    ssh $ldapUsername@localhost
 
 }
