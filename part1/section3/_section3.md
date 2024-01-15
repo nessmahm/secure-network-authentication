@@ -1,4 +1,4 @@
-# **README: Integration of Apache with OpenLDAP**
+# **Section 3: Integration of Apache with OpenLDAP**
 
 ## **Introduction**
 
@@ -26,11 +26,19 @@ This configuration will allow access to the website for users in the "teachers" 
 
 ___3.Test web access :___
 
-The third script function tests web access for an authorized and unauthorized user. Use the following command, replacing username and password with valid information:
+The third script function tests web access for an authorized and unauthorized user. 
+~~~sh
+ source ./section3.sh && testWebAccess
+   ~~~
+If you want to test for a specific user, provide the LDAP username as an argument:
+~~~sh
+ source ./section3.sh && testWebAccess <LDAP_USERNAME>
+   ~~~
+
+We can test web access for the user "souhaieb.youssfi" with the password "souheib". This user is allowed based on the LDAP configuration since he is in the teachers group.
 ~~~sh
  source ./section3.sh && testWebAccess souhaieb.youssfi
    ~~~
-This command sources the script and then tests web access for the user "souhaieb.youssfi" with the password "souheib". This user is allowed based on the LDAP configuration since he is in the teachers group.
 ![img_5.png](../../images/part1/section3/img_5.png)
 
 You should see a successful response indicating that the web access is granted for the authorized user.

@@ -5,6 +5,7 @@ enableSSHAuthWithOpenLDAP() {
     sudo apt-get purge openssh-server
     sudo apt-get install -y openssh-server libpam-ldapd nscd
     sudo dpkg-reconfigure libpam-ldapd
+    ssh-keygen -f "/home/dhouib/.ssh/known_hosts" -R "localhost"
 }
 
 # Function to restrict SSH access to users in the appropriate OpenLDAP group
