@@ -1,0 +1,10 @@
+dn: cn=config
+changetype: modify
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ldap/ssl_certificates/fullchain.pem
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/ldap/ssl_certificates/cert.pem
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/ldap/ssl_certificates/privkey.pem

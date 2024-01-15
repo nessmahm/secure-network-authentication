@@ -43,7 +43,7 @@ addCertificates() {
         sudo openssl x509 -outform DER -req -in "$cert_dir/$username.csr" -CA "$cert_dir/ca.crt" -CAkey "$cert_dir/ca.key" -CAcreateserial -out "$cert_dir/$username.crt"
     done < "user_list.txt"
 
-    ldapmodify -x -D "cn=admin,dc=ldap,dc=com" -W -f certificates.ldif
+    sudo ldapmodify -x -D "cn=admin,dc=ldap,dc=com" -W -f certificates.ldif
 }
 
 # Delete OpenLDAP groups configuration
@@ -58,20 +58,27 @@ testAuthentication() {
 }
 
 # Configure LDAPS (LDAP over TLS)
+# Configure LDAPS (LDAP over TLS)
 configureLDAPS() {
-    sudo openssl genpkey -algorithm RSA -out "/etc/ldap.key"
-    sudo openssl req -newkey rsa:2048 -nodes -keyout "/etc/ldap.key" -x509 -days 365 -out "/etc/ldap.crt"
+    cert_dir="/etc/certificates"
 
-    sudo chown openldap:openldap /etc/ldap.crt
-    sudo chown openldap:openldap /etc/ldap.key
-    sudo chmod 600 /etc/ldap.crt
-    sudo chmod 600 /etc/ldap.key
+    # Generate CA key and certificate
+    sudo openssl genpkey -algorithm RSA -out "$cert_dir/ca.key"
+    sudo openssl req -newkey rsa:2048 -nodes -keyout "$cert_dir/ca.key" -x509 -days 365 -out "$cert_dir/ca.crt"
 
-    sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f certinfo.ldif || true
+    # Set proper ownership and permissions for CA key and certificate
+    sudo chown openldap:openldap "$cert_dir/ca.crt"
+    sudo chown openldap:openldap "$cert_dir/ca.key"
+    sudo chmod 600 "$cert_dir/ca.crt"
+    sudo chmod 600 "$cert_dir/ca.key"
 
-    sudo cp slapd.conf /etc/ldap/slapd.d/cn=config.ldif
-
-    sudo service slapd restart
+    # Check if the TLS certificate file entry already exists
+    if ! sudo ldapsearch -Q -Y EXTERNAL -H ldapi:/// -b "cn=config" "(olcTLSCertificateFile=$cert_dir/ca.crt)" | grep -q "olcTLSCertificateFile"; then
+        # Add the TLS certificate file entry
+       sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f certinfo.ldif
+    fi
+    # Restart LDAP server
+    sudo systemctl restart slapd
 }
 
 # Test secure LDAP with LDAPS
@@ -82,5 +89,5 @@ testLDAPS() {
         ldapUsername="$1"
     fi
 
-    ldapsearch -x -H ldaps://localhost:636 -D "uid=$ldapUsername,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
+ldapsearch -x -H ldaps://127.0.0.1:389 -D "uid=$ldapUsername,ou=users,dc=ldap,dc=com" -W -b "dc=ldap,dc=com"
 }

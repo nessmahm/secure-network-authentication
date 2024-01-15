@@ -1,5 +1,8 @@
 dn: cn=config
 changetype: modify
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ca.crt
+-
 add: olcTLSCertificateFile
 olcTLSCertificateFile: /etc/ldap.crt
 -

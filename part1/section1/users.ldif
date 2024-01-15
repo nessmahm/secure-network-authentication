@@ -1,17 +1,3 @@
-# Group Entry for "teachers"
-dn: cn=teachers,ou=groups,dc=ldap,dc=com
-objectClass: posixGroup
-objectClass: top
-gidNumber: 6001
-cn: teachers
-
-# Group Entry for "students"
-dn: cn=students,ou=groups,dc=ldap,dc=com
-objectClass: posixGroup
-objectClass: top
-gidNumber: 6002
-cn: students
-
 # User Entry for "souhaieb.youssfi"
 dn: uid=souhaieb.youssfi,ou=users,dc=ldap,dc=com
 objectClass: top
