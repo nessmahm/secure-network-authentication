@@ -13,4 +13,7 @@ ns2             IN A 192.168.56.101
 gl4.tn.   86400  IN        NS      ns1.gl4.tn.
 gl4.tn.   86400  IN        NS      ns2.gl4.tn.
 gl4.tn.          IN        A       192.168.56.99
+apache           IN        A       127.0.0.1
+ldap             IN        A       127.0.0.1
+openvpn          IN        A       127.0.0.1
 www              IN        CNAME   gl4.tn.

@@ -3,21 +3,20 @@ installBind9() {
   sudo apt install bind9 -y
 }
 createZoneFile() {
-  sudo nano /etc/bind/gl4.tn.zone
-  #Check the file gl4.tn.zone
+  #Change the addresses to your IP addresses
+  sudo cp "$(dirname "$0")/gl4.tn.zone" /etc/bind/gl4.tn.zone
 }
 
 #optional
 createReverseZoneFile() {
   # Change "99.56.168.192" to your IP address
-  sudo nano /etc/bind/db.99.56.168.192
-  #Check the file db.99.56.168.192
+  sudo cp "$(dirname "$0")/db.99.56.168.192" /etc/bind/db.99.56.168.192
 
 }
 updateMainConfigFile() {
   # Check files named.conf.local and named.conf.options
-  sudo nano /etc/bind/named.conf.local
-  sudo nano /etc/bind/named.conf.options
+  sudo cp "$(dirname "$0")/named.conf.local" /etc/bind/named.conf.local
+  sudo "$(dirname "$0")/named.conf.options" /etc/bind/named.conf.options
 }
 
 checkConfigFiles() {
@@ -37,3 +36,11 @@ restartBind9() {
 testDNS() {
   dig gl4.tn
 }
+installBind9
+createZoneFile
+createReverseZoneFile
+updateMainConfigFile
+checkConfigFiles
+verifyZoneFile
+restartBind9
+testDNS
