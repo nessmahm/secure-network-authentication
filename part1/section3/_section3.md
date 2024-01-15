@@ -19,7 +19,7 @@ The second script function configures Apache for OpenLDAP authentication. Ensure
   source ./section3.sh && configureApacheOpenLDAP
    ~~~
 
-![img_2.png](img_2.png)
+![img_2.png](../../images/part1/section3/img_2.png)
 
 ___3.Test web access :___
 
@@ -28,14 +28,17 @@ The third script function tests web access for an authorized and unauthorized us
  source ./section3.sh && testWebAccess souhaieb.youssfi souheib
    ~~~
 This command sources the script and then tests web access for the user "souhaieb.youssfi" with the password "souheib". This user is allowed based on the LDAP configuration.
-![img_3.png](img_3.png)
+![img_5.png](../../images/part1/section3/img_5.png)
 
 You should see a successful response indicating that the web access is granted for the authorized user.
-![img_1.png](img_1.png)
 
 Test web access for a user who is not authorized. Replace the command with credentials for a user who is not in the allowed LDAP group.For example run this command :
 ~~~sh
  source ./section3.sh && testWebAccess nada.mankai mankai
   ~~~
+![img_4.png](../../images/part1/section3/img_4.png)
+In this case, the web access should not be granted,
 
-In this case, the web access should not be granted, and you should receive an authentication error or access denied message.
+_Creating Your Own Website_
+
+If you wish to create your own website using Apache with OpenLDAP integration, this script serves as a solid foundation. Simply follow the provided steps for Apache configuration and LDAP integration, and you'll have a secure authentication system in place for your site. Please note that the web access testing in this script uses placeholder credentials, and the actual website content is not provided. You are encouraged to develop and deploy your unique website content, taking advantage of the secured authentication setup.
