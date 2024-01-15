@@ -23,7 +23,3 @@ configureApacheOpenLDAP() {
 testWebAccess() {
     curl -u "$1":"$2" http://localhost
 }
-
-# Uncomment and execute the functions as needed
-# configureApacheOpenLDAP
-# testWebAccess

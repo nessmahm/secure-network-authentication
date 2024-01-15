@@ -1,0 +1,14 @@
+dn: uid=souhaieb.youssfi,ou=users,dc=ldap,dc=com
+changetype: modify
+add: userCertificate;binary
+userCertificate;binary:< file:///etc/certificates/souhaieb.youssfi.crt
+
+dn: uid=mohamed.dhouib,ou=users,dc=ldap,dc=com
+changetype: modify
+add: userCertificate;binary
+userCertificate;binary:< file:///etc/certificates/mohamed.dhouib.crt
+
+dn: uid=nada.mankai,ou=users,dc=ldap,dc=com
+changetype: modify
+add: userCertificate;binary
+userCertificate;binary:< file:///etc/certificates/nada.mankai.crt
