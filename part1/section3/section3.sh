@@ -21,5 +21,5 @@ configureApacheOpenLDAP() {
 
 # Function to test web access for an authorized and unauthorized user
 testWebAccess() {
-    curl -u "$1":"$2" http://localhost
+    curl -u $1:$2 http://localhost
 }
