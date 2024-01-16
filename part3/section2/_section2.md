@@ -38,7 +38,7 @@ Restart the SSH service.
 ***Explanation***:
 Login and obtain the Ticket Granting Ticket (TGT) using Kerberos.
 Display the list of Kerberos tickets.
-![client](../client-kerberos.png)
+![client](../../images/part3/client-kerberos.png)
 ### Step 5: Receive File Using SCP
 Code:
 - **Code:**

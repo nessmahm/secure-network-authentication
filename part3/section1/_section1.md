@@ -57,7 +57,7 @@ Open the Kerberos admin interface (kadmin.local).
 Add principals for users and administrators.
 list principals shows the registered principals.
 
-![list principals](../principals.png).
+![list principals](../../images/part3/principals.png).
 
 ### Step 7: Add Encryption Types for Principals
 - **Code:**

@@ -1,5 +1,5 @@
 # DNS Server Configuration for Network Services
-### This repository contains scripts and configuration files for setting up a DNS (Bind) server on a separate machine and configuring it to resolve domain names for OpenLDAP, Apache, and OpenVPN services.
+###### This repository contains scripts and configuration files for setting up a DNS (Bind) server on a separate machine and configuring it to resolve domain names for OpenLDAP, Apache, and OpenVPN services.
 
 # Section 1: Configuration of DNS Server
  ### 1.1 Install Bind9

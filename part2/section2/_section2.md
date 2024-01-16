@@ -9,11 +9,11 @@ Test DNS resolution for the configured services:
 
 ### Example: ldap auth
 ~~~sh
-    source ./section2.sh && ldapDNS
+  source ./section2.sh && ldapDNS
 ~~~
 ### Example: apache auth
 ~~~sh
-    source ./section2.sh && apacheDNS
+  source ./section2.sh && apacheDNS
 ~~~~
 
 ### Example: openvpn auth

@@ -1,22 +1,24 @@
+#!/bin/bash
+
 installBind9() {
   sudo apt update
   sudo apt install bind9 -y
 }
 createZoneFile() {
   #Change the addresses to your IP addresses
-  sudo cp "$(dirname "$0")/gl4.tn.zone" /etc/bind/gl4.tn.zone
+  sudo cp "gl4.tn.zone" /etc/bind/gl4.tn.zone
 }
 
 #optional
 createReverseZoneFile() {
   # Change "99.56.168.192" to your IP address
-  sudo cp "$(dirname "$0")/db.99.56.168.192" /etc/bind/db.99.56.168.192
+  sudo cp "db.99.56.168.192" /etc/bind/db.99.56.168.192
 
 }
 updateMainConfigFile() {
   # Check files named.conf.local and named.conf.options
-  sudo cp "$(dirname "$0")/named.conf.local" /etc/bind/named.conf.local
-  sudo "$(dirname "$0")/named.conf.options" /etc/bind/named.conf.options
+  sudo cp "named.conf.local" /etc/bind/named.conf.local
+  sudo cp "named.conf.options" /etc/bind/named.conf.options
 }
 
 checkConfigFiles() {
@@ -25,7 +27,7 @@ checkConfigFiles() {
 }
 
 verifyZoneFile() {
-  sudo named-checkzone gl4.net /etc/bind/gl4.tn.zone
+  sudo named-checkzone gl4.tn /etc/bind/gl4.tn.zone
 }
 
 

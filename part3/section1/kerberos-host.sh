@@ -104,15 +104,3 @@ sendFile(){
   echo 'hello' > file
   sudo scp file
   }
-
-#configureHostname
-#installKerberos
-#createPasswordForKerberosDB
-#connectKerberos
-#configureKerberos
-#addPrincipals
-#addPolitics
-#installOpenSSH
-#login
-#obtainTicket
-#sendFile

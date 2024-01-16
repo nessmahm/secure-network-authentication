@@ -1,3 +1,5 @@
+#!/bin/bash
+
 testDNS() {
     dig gl4.tn
     dig ldap.gl4.tn
@@ -6,13 +8,28 @@ testDNS() {
 }
 
 ldapDNS() {
-      ldapsearch -x -H ldap://ldap.gl4.tn -b "dc=gl4,dc=tn" -D "cn=admin,dc=gl4,dc=tn" -W
+      ldapsearch -x -H ldap://ldap.gl4.tn -b "dc=ldap,dc=com" -D "cn=admin,dc=ldap,dc=com" -W
 }
 
 apacheDNS() {
-      curl -u user1:password1 http://apache.gl4.tn
+      if [ -z "$1" ]; then
+                    read -p "Enter LDAP Username: " ldapUsername
+                else
+                    ldapUsername="$1"
+            fi
+
+      read -s -p "Enter LDAP password: " ldapPassword
+      curl -u $ldapUsername:$ldapPassword http://apache.gl4.tn
 }
 
 openvpnDNS() {
+  if [ -z "$1" ]; then
+                  read -p "Enter LDAP Username: " ldapUsername
+              else
+                  ldapUsername="$1"
+      fi
+      read -s -p "Enter LDAP password: " ldapPassword
+
+      echo -e "$ldapUsername\n$ldapPassword" | sudo openvpn --config /etc/openvpn/client.conf --auth-user-pass /dev/stdin --remote openvpn.gl4.tn
 
 }

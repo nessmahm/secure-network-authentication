@@ -29,13 +29,6 @@ We can test web access for the user "souhaieb.youssfi" with the password "souhei
 ~~~sh
  source ./section3.sh && testWebAccess souhaieb.youssfi
    ~~~
-![img_1.png](../../images/part1/section4/img_1.png)
+![img_1.png](../../images/part1/section4/img.png)
 
 You should see a successful response indicating that the vpn connection is created for the authorized user.
-
-Test vpn connection for a user who is not authorized. Replace the command with credentials for a user who is not in the allowed LDAP group.
-~~~sh
- source ./section3.sh && testWebAccess nada.mankai
-  ~~~
-![img_2.png](../../images/part1/section4/img_2.png)
-In this case, the vpn connection should not be created since this user is not a teacher,
