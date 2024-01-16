@@ -1,6 +1,3 @@
-# DNS Server Configuration for Network Services
-###### This repository contains scripts and configuration files for setting up a DNS (Bind) server on a separate machine and configuring it to resolve domain names for OpenLDAP, Apache, and OpenVPN services.
-
 # Section 1: Configuration of DNS Server
  ### 1.1 Install Bind9
 ~~~sh
@@ -43,3 +40,4 @@ Verify the syntax of the DNS zone file:
   ~~~sh
     source ./section1.sh && testDNS
   ~~~~
+![img_1.png](../../images/part2/section1/img1.png)

@@ -12,5 +12,3 @@ This section is dedicated to configuring a DNS server (Bind) on a distinct machi
 
 The second section focuses on testing DNS resolution for each configured service. Tasks include validating the DNS resolution for the configured services and ensuring correct name-to-IP address translation.
 
-
-

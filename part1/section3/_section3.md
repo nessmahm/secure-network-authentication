@@ -41,7 +41,7 @@ We can test web access for the user "souhaieb.youssfi" with the password "souhei
    ~~~
 ![img_5.png](../../images/part1/section3/img_5.png)
 
-You should see a successful response indicating that the web access is granted for the authorized user.
+You should see a successful response indicating that the web access is granted for the authorized user (The website itself is not configured).
 
 Test web access for a user who is not authorized. Replace the command with credentials for a user who is not in the allowed LDAP group.
 For example run this command :

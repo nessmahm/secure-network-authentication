@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO: add the teachers only access
 # Function to install OpenVPN
 installOpenVpn() {
     sudo apt-get update

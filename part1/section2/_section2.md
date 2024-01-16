@@ -11,7 +11,7 @@ Run the following command to enable SSH authentication via OpenLDAP:
 ~~~sh
 sh enableSSHAuthWithOpenLDAP
 ~~~
-This function removes the existing openssh-server, installs openssh-server, libpam-ldapd, and nscd, and then reconfigures libpam-ldapd.
+This function installs openssh-server, libpam-ldapd, and nscd, and then reconfigures libpam-ldapd.
 
 ___Step 2: Restrict SSH Access to a Specific OpenLDAP Group___<br/>
 Execute the following command to give SSH access only to authorized users:

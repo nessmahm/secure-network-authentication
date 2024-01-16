@@ -6,7 +6,7 @@ Part 1 of the project focuses on implementing a comprehensive authentication sys
 
 ### [Section 1: Configuration of OpenLDAP](./section1/_section1.md)
 
-This section is dedicated to setting up and configuring OpenLDAP, a central component for user authentication and authorization. The tasks include configuring an OpenLDAP server with at least two users and two groups, adding user information with X.509 certificates, ensuring successful user authentication, and testing the secure part of LDAP with LDAPS.
+This section is dedicated to setting up and configuring OpenLDAP, a central component for user authentication and authorization. The tasks include configuring an OpenLDAP server with five users and two groups ( teachers , students ), adding user information with X.509 certificates, ensuring successful user authentication, and testing the secure part of LDAP with LDAPS.
 
 ### [Section 2: Integration of SSH](./section2/_section2.md)
 

@@ -30,7 +30,7 @@ source ./section1.sh && addOpenLDAPOrganizationalUnits
    This function adds users to OpenLDAP based on the provided users.ldif file.
 
    ~~~sh
-source ./section1.sh && addOpenLDAPOrganizationalUnits
+source ./section1.sh && addOpenLDAPUsers
  ~~~
 
 ![img_6.png](../../images/part1/section1/img_6.png)

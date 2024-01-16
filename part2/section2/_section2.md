@@ -11,9 +11,18 @@ Test DNS resolution for the configured services:
 ~~~sh
   source ./section2.sh && ldapDNS
 ~~~
+![img_1.png](../../images/part2/section2/img1.png)
 ### Example: apache auth
 ~~~sh
   source ./section2.sh && apacheDNS
 ~~~~
+![img_2.png](../../images/part2/section2/img2.png)
+
+
+![img_3.png](../../images/part2/section2/img3.png)
 
 ### Example: openvpn auth
+~~~sh
+  source ./section2.sh && openvpnDNS
+~~~
+![img_4.png](../../images/part2/section2/img4.png)
