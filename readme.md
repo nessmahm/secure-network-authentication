@@ -1,4 +1,4 @@
-# Kerberos Authentication - Overview
+# Secure Network Authentication - Overview
 
 ## Project Objective
 The primary goal of this project is to establish a robust authentication and network services infrastructure using industry-standard technologies such as OpenLDAP, SSH, Apache, OpenVPN, DNS, and Kerberos.
