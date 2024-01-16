@@ -49,3 +49,5 @@ Use scp to securely copy a file from the Kerberos server (kdc.company.tn) to the
 
 ***Instructions***
 Uncomment and execute the desired steps in the script to perform specific tasks. Follow the comments within the script for additional configuration steps. Adapt the script according to your specific environment and requirements.
+
+![client](../../images/part3/kerberos-ssh.png)
